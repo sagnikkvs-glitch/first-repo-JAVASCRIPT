@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Countdown Checker</title>
+
+        <style>
+            .hi{
+                background-color: aqua;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f4ff;
+                padding: 30px;
+                text-align: center;
+            }
+            .hii{
+                border: 2px solid #ff5a43;
+                border-radius: 5px;
+                background-color: pink;
+            }
+        </style>
+
+
+    
+</head>
+
+<body>
+    <fieldset class="hi">
+    <legend><h2>Birthday Countdown Checker</h2></legend>
+    <h3>Hi,good to see you!</h3>
+<form>
+    <label>pls enter your birthday:</label>
+    <input type="date" id="bday" name="birthday" class="hii"><br><br>
+    <button type="button" id="myBtn" onclick="sayhello()">Check Countdown</button>
+</form>
+<div id="result" style="margin-top: 20px; font-size: 18px; color: #ff5a43; font-weight: bold;"></div>
+    </fieldset>
+
+<script>
+
+const button = document.getElementById('myBtn');
+button.addEventListener('click', sayhello);
+ 
+function sayhello(){
+    let bdayInput = document.getElementById('bday').value;
+    
+    if (!bdayInput) {
+        document.getElementById('result').textContent = 'Please enter your birthday!';
+        return;
+    }
+    
+    let now = new Date();
+    let bday = new Date(bdayInput);
+    
+    // Calculate next birthday
+    let nextBday = new Date(now.getFullYear(), bday.getMonth(), bday.getDate());
+    
+    // If birthday has already passed this year, set it to next year
+    if (nextBday < now) {
+        nextBday = new Date(now.getFullYear() + 1, bday.getMonth(), bday.getDate());
+    }
+    
+    // Calculate days remaining
+    let daysRemaining = Math.ceil((nextBday - now) / (1000 * 60 * 60 * 24));
+    
+    document.getElementById('result').textContent = `Days until next birthday: ${daysRemaining} days`;
+}
+
+</script>
+
+    
+</body>
+</html>

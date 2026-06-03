@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superhero Profile</title>
+</head>
+<body>
+
+    <h1>Superhero Information</h1>
+
+    <button onclick="showHero()">Show Hero</button>
+
+<div id="output"></div>
+
+    <script>
+
+        class Superhero {
+
+            constructor(name, power, mission) {
+                this.name = name;
+                this.power = power;
+                this.mission = mission;
+            }
+
+            introduce() {             //method
+                return `Hi, I am ${this.name}.`;      //here return is used to return the value of the string which is then used in the showHero function to display the information about the superhero
+            }
+
+            usePower() {
+                return `${this.name} uses ${this.power}!`;
+            }
+        }
+
+        const hero1 = new Superhero("Spider-Man","SPIDER Web Shooting","Protect New York"  );
+          
+            
+            
+        function showHero() {
+
+            document.getElementById("output").innerHTML = `
+                <h2>${hero1.name}</h2>
+                <p><strong>Power:</strong> ${hero1.power}</p>
+                <p><strong>Mission:</strong> ${hero1.mission}</p>
+                <p>${hero1.introduce()}</p>
+                <p>${hero1.usePower()}</p>
+            `;
+        }
+
+    </script>
+
+</body>
+</html>
